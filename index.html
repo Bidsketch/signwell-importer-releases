@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SignWell Importer - Download</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .logo svg {
+      width: 36px;
+      height: 36px;
+    }
+    .logo span {
+      font-size: 20px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #64748b;
+      margin-bottom: 40px;
+    }
+    .downloads {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .download-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 24px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .download-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .download-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .download-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .download-icon svg {
+      width: 24px;
+      height: 24px;
+      color: #475569;
+    }
+    .download-name {
+      font-weight: 600;
+      font-size: 16px;
+      color: #0f172a;
+    }
+    .download-detail {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .download-btn:hover {
+      background: #1d4ed8;
+    }
+    .download-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+    .install-help {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    .install-help h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #0f172a;
+    }
+    .install-section {
+      margin-bottom: 16px;
+    }
+    .install-section:last-child {
+      margin-bottom: 0;
+    }
+    .install-section h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .install-section ol {
+      padding-left: 20px;
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.7;
+    }
+    .version-info {
+      text-align: center;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .version-info a {
+      color: #64748b;
+      text-decoration: none;
+    }
+    .version-info a:hover {
+      text-decoration: underline;
+    }
+    #loading {
+      text-align: center;
+      padding: 40px;
+      color: #94a3b8;
+    }
+    #error {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="8" fill="#2563eb"/>
+        <path d="M10 18.5L15 23.5L26 12.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>SignWell Importer</span>
+    </div>
+
+    <h1>Download SignWell Importer</h1>
+    <p class="subtitle">Import your DocuSign templates into SignWell.</p>
+
+    <div id="loading">Loading latest release...</div>
+    <div id="error">
+      <p>Could not load downloads. Please try again later.</p>
+    </div>
+
+    <div id="downloads" class="downloads" style="display:none;"></div>
+
+    <div id="install-help" class="install-help" style="display:none;">
+      <h2>First-time install notes</h2>
+      <div class="install-section">
+        <h3>macOS</h3>
+        <ol>
+          <li>Open the downloaded .dmg file</li>
+          <li>Drag the app to your Applications folder</li>
+          <li>On first launch: right-click the app, click <strong>Open</strong>, then click <strong>Open</strong> again in the dialog</li>
+          <li>Alternatively: go to <strong>System Settings &rarr; Privacy &amp; Security</strong> and click <strong>Open Anyway</strong></li>
+        </ol>
+      </div>
+      <div class="install-section">
+        <h3>Windows</h3>
+        <ol>
+          <li>Run the downloaded installer (.exe)</li>
+          <li>If you see "Windows protected your PC", click <strong>More info</strong> then <strong>Run anyway</strong></li>
+        </ol>
+      </div>
+    </div>
+
+    <div id="version-info" class="version-info" style="display:none;"></div>
+  </div>
+
+  <script>
+    const REPO = 'Bidsketch/signwell-importer-releases';
+
+    const PLATFORM_CONFIG = {
+      'Mac-Apple-Silicon': {
+        name: 'macOS (Apple Silicon)',
+        detail: 'M1, M2, M3, M4',
+        icon: 'apple'
+      },
+      'Mac-Intel': {
+        name: 'macOS (Intel)',
+        detail: 'Pre-2021 Macs',
+        icon: 'apple'
+      },
+      'Windows-Setup': {
+        name: 'Windows',
+        detail: 'Windows 10 or later',
+        icon: 'windows'
+      }
+    };
+
+    const icons = {
+      apple: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>',
+      windows: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 12V6.75l6-1.32v6.48L3 12zm6.375.13l8.625.09V5.67l-8.625 1.33v5.13zM18 13.28l-8.625-.09v5.81L18 20.25v-6.97zM9 13.19L3 13.1v5.82l6 1.34v-7.07z"/></svg>'
+    };
+
+    async function loadRelease() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`);
+        if (!res.ok) throw new Error('No release found');
+        const release = await res.json();
+
+        const container = document.getElementById('downloads');
+        let html = '';
+
+        for (const asset of release.assets) {
+          let config = null;
+          for (const [key, cfg] of Object.entries(PLATFORM_CONFIG)) {
+            if (asset.name.includes(key)) {
+              config = cfg;
+              break;
+            }
+          }
+          if (!config) continue;
+
+          html += `
+            <div class="download-card">
+              <div class="download-info">
+                <div class="download-icon">${icons[config.icon]}</div>
+                <div>
+                  <div class="download-name">${config.name}</div>
+                  <div class="download-detail">${config.detail}</div>
+                </div>
+              </div>
+              <a href="${asset.browser_download_url}" class="download-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download
+              </a>
+            </div>`;
+        }
+
+        if (!html) throw new Error('No matching assets');
+
+        container.innerHTML = html;
+        container.style.display = 'flex';
+        document.getElementById('install-help').style.display = 'block';
+        document.getElementById('loading').style.display = 'none';
+
+        const versionInfo = document.getElementById('version-info');
+        const date = new Date(release.published_at).toLocaleDateString('en-US', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+        versionInfo.innerHTML = `Version ${release.tag_name} &middot; ${date}`;
+        versionInfo.style.display = 'block';
+      } catch (e) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error').style.display = 'block';
+      }
+    }
+
+    loadRelease();
+  </script>
+</body>
+</html>
